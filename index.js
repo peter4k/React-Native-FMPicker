@@ -90,7 +90,6 @@ var styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding:0,
-        backgroundColor: '#F5FCFF',
     },
     buttonView:{
         width:SCREEN_WIDTH,
