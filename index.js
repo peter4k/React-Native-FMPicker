@@ -1,79 +1,111 @@
-/**
-* Sample React Native App
-* https://github.com/facebook/react-native
-*/
+
 'use strict';
 
 var React = require('react-native');
 var {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
+    TouchableOpacity,
+    Modal,
+    PickerIOS,
+    PickerItemIOS
 } = React;
 
-var FMPicker = require('react-native-fm-picker');
+var SCREEN_WIDTH = require('Dimensions').get('window').width;
 
-var options = ['Option1', 'Option2', 'Option3'];
-//Labels is optional
-var labels = ['hello', 'world', 'Foodmate'];
-
-var example = React.createClass({
+var Component = React.createClass({
+    show: function(){
+        this.setState({modalVisible: true});
+    },
     getInitialState: function(){
         return {
-            selectedOption: 'Option1'
-        }
+            options: this.props.options,
+            labels: this.props.labels || this.props.options,
+            color: this.props.color || '#007AFF',
+            modalVisible: false,
+            selectedOption: this.props.options[0]
+        };
     },
     render: function() {
         return (
-            <View style={styles.container}>
-                <Text>Current Option: {this.state.selectedOption}</Text>
-                <Text
-                    style={{color:'blue', marginTop: 20}}
-                    onPress={()=>{
-                        this.refs.picker.show();
-                    }}>
-                    Click here to select your option
-                </Text>
-                <Text
-                    style={{color:'blue', marginTop: 20}}
-                    onPress={()=>{
-                        this.refs.picker2.show();
-                    }}>
-                    Click here to select your option with labels
-                </Text>
-                <FMPicker ref={'picker'} options={options}
-                    onSubmit={(option)=>{
-                        this.setState({selectedOption: option})
-                    }}
-                    />
-                <FMPicker ref={'picker2'} options={options} labels={labels}
-                    onSubmit={(option)=>{
-                        this.setState({selectedOption: option})
-                    }}
-                    />
-            </View>
+            <Modal
+                animated={true}
+                transparent={true}
+                visible={this.state.modalVisible}>
+                <View style={styles.basicContainer}>
+                    <View style={styles.modalContainer}>
+                        <View style={styles.buttonView}>
+                            <TouchableOpacity onPress={() => {
+                                    this.setState({modalVisible: false});
+                                }}>
+                                <Text style={{color:this.state.color}}>Cancel</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                    if(this.props.onSubmit) this.props.onSubmit(this.state.selectedOption);
+                                    this.setState({modalVisible: false});
+                                }}>
+                                <Text style={{color:this.state.color}}>Confirm</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.mainBox}>
+                            {/*Model body*/}
+                            <PickerIOS
+                                ref={'picker'}
+                                style={styles.bottomPicker}
+                                selectedValue={this.state.selectedOption}
+                                onValueChange={(option) => this.setState({selectedOption: option})}
+                                >
+                                {this.state.options.map((option, i) => {
+                                    var label = this.state.labels[i] || option;
+                                    return (
+                                        <PickerItemIOS
+                                            value={option}
+                                            label={label}
+                                            />
+                                    )
+                                })}
+                            </PickerIOS>
+                        </View>
+
+                    </View>
+                </View>
+            </Modal>
         );
     }
 });
 
 var styles = StyleSheet.create({
-    container: {
+    basicContainer:{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    modalContainer:{
+        position:'absolute',
+        bottom:0,
+        right:0,
+        left:0,
+        width:SCREEN_WIDTH,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding:0,
         backgroundColor: '#F5FCFF',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
+    buttonView:{
+        width:SCREEN_WIDTH,
+        padding: 8,
+        borderTopWidth:0.5,
+        borderTopColor:'lightGray',
+        justifyContent: 'space-between',
+        flexDirection:'row',
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+    bottomPicker : {
+        width:SCREEN_WIDTH,
+        fontSize:13
     },
+    mainBox: {
+    }
 });
 
-AppRegistry.registerComponent('example', () => example);
+module.exports = Component;
