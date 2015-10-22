@@ -26,6 +26,7 @@ var Component = React.createClass({
         return {
             options: this.props.options,
             labels: this.props.labels || this.props.options,
+            color: this.props.color || '#007AFF'
             modalVisible: false,
             selectedOption: this.props.options[0]
         };
@@ -42,13 +43,13 @@ var Component = React.createClass({
                             <TouchableOpacity onPress={() => {
                                     this.setState({modalVisible: false});
                                 }}>
-                                <Text style={{color:"#ff9900"}}>取消</Text>
+                                <Text style={{color:this.state.color}}>Cancel</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => {
                                     if(this.props.onSubmit) this.props.onSubmit();
                                     this.setState({modalVisible: false});
                                 }}>
-                                <Text style={{color:"#ff9900"}}>确认</Text>
+                                <Text style={{color:this.state.color}}>Confirm</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={baseStyle.IOSBottomPicker.mainBox}>

@@ -1,0 +1,24 @@
+{
+  "name": "react-native-fm-picker",
+  "version": "0.0.1",
+  "description": "A React Native PickerIOS at the bottom of the page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peter4k/React-Native-FMPicker.git"
+  },
+  "keywords": [
+    "React-Native",
+    "Picker",
+    "PickerIOS"
+  ],
+  "author": "Yi Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peter4k/React-Native-FMPicker/issues"
+  },
+  "homepage": "https://github.com/peter4k/React-Native-FMPicker#readme"
+}
