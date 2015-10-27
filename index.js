@@ -101,8 +101,7 @@ var styles = StyleSheet.create({
         flexDirection:'row',
     },
     bottomPicker : {
-        width:SCREEN_WIDTH,
-        fontSize:13
+        width:SCREEN_WIDTH
     },
     mainBox: {
     }
