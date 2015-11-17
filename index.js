@@ -19,12 +19,18 @@ var Component = React.createClass({
         this.setState({modalVisible: true});
     },
     getInitialState: function(){
+        
+        var selectedOption;
+        if (this.props.options.indexOf(this.props.selectedOption) > -1) {
+            selectedOption = this.props.selectedOption;
+        }
+        
         return {
             options: this.props.options,
             labels: this.props.labels || this.props.options,
             color: this.props.color || '#007AFF',
             modalVisible: false,
-            selectedOption: this.props.options[0]
+            selectedOption: selectedOption || this.props.options[0]
         };
     },
     render: function() {
