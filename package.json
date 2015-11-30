@@ -1,6 +1,6 @@
 {
   "name": "react-native-fm-picker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React Native PickerIOS at the bottom of the page",
   "main": "index.js",
   "scripts": {
