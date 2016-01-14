@@ -9,9 +9,10 @@ var {
     TouchableOpacity,
     Modal,
     PickerIOS,
-    PickerItemIOS,
     Dimensions
 } = React;
+
+var PickerItemIOS = PickerIOS.Item;
 
 var SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -61,6 +62,7 @@ var Component = React.createClass({
                                     var label = this.state.labels[i] || option;
                                     return (
                                         <PickerItemIOS
+                                            key={option}
                                             value={option}
                                             label={label}
                                             />
