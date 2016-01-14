@@ -103,7 +103,6 @@ var styles = StyleSheet.create({
     },
     bottomPicker : {
         width:SCREEN_WIDTH,
-        fontSize:13
     },
     mainBox: {
     }
