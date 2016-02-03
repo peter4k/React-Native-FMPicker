@@ -81,14 +81,10 @@ var Component = React.createClass({
 var styles = StyleSheet.create({
     basicContainer:{
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
     },
     modalContainer:{
-        position:'absolute',
-        bottom:0,
-        right:0,
-        left:0,
         width:SCREEN_WIDTH,
         justifyContent: 'center',
         alignItems: 'center',
