@@ -99,7 +99,7 @@ var styles = StyleSheet.create({
         width:SCREEN_WIDTH,
         padding: 8,
         borderTopWidth:0.5,
-        borderTopColor:'lightGray',
+        borderTopColor:'lightgrey',
         justifyContent: 'space-between',
         flexDirection:'row',
     },
