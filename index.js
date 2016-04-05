@@ -59,7 +59,7 @@ var Component = React.createClass({
                                 onValueChange={(option) => this.setState({selectedOption: option})}
                                 >
                                 {this.props.options.map((option, i) => {
-                                    var label = this.state.labels[i] || option;
+                                    var label = this.props.labels[i] || option;
                                     return (
                                         <PickerItemIOS
                                             key={option}
