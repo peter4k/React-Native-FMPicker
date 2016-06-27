@@ -1,7 +1,8 @@
 
 'use strict';
 
-var React = require('react-native');
+var React = require('react');
+var ReactNative = require('react-native');
 var {
     StyleSheet,
     Text,
@@ -10,7 +11,7 @@ var {
     Modal,
     PickerIOS,
     Dimensions
-} = React;
+} = ReactNative ;
 
 var PickerItemIOS = PickerIOS.Item;
 
