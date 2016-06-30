@@ -33,7 +33,7 @@ var Component = React.createClass({
     render: function() {
         return (
             <Modal
-                animated={true}
+                animationType={'slide'}
                 transparent={true}
                 visible={this.state.modalVisible}>
                 <View style={styles.basicContainer}>
